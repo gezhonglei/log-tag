@@ -52,4 +52,44 @@ public class InnerLogger implements Logger {
 		this.logger.logDataFlag(tag, logClassFullname, LogLevel.ERROR, format, params, null);
 	}
 
+	@Override
+	public void debug(String format, Object[] params, Throwable t) {
+		this.logger.logDataFlag(tag, logClassFullname, LogLevel.DEBUG, format, params, t);
+	}
+
+	@Override
+	public void info(String format, Object[] params, Throwable t) {
+		this.logger.logDataFlag(tag, logClassFullname, LogLevel.INFO, format, params, t);
+	}
+
+	@Override
+	public void warn(String format, Object[] params, Throwable t) {
+		this.logger.logDataFlag(tag, logClassFullname, LogLevel.WARN, format, params, t);
+	}
+
+	@Override
+	public void error(String format, Object[] params, Throwable t) {
+		this.logger.logDataFlag(tag, logClassFullname, LogLevel.ERROR, format, params, t);
+	}
+
+	@Override
+	public void debug(String message) {
+		debug(message, null, null);
+	}
+
+	@Override
+	public void info(String message) {
+		info(message, null, null);
+	}
+
+	@Override
+	public void warn(String message) {
+		warn(message, null, null);
+	}
+
+	@Override
+	public void error(String message) {
+		error(message, null, null);
+	}
+
 }

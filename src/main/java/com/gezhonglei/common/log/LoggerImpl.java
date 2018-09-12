@@ -41,31 +41,22 @@ public class LoggerImpl implements Logger {
 
 	@Override
 	public void debug(String format, Object... params) {
-		if(this.isDebugEnabled()) {
-			logData(null, logClassFullName, LogLevel.DEBUG, format, params, null);
-		}
+		debug(format, params, null);
 	}
-		
 
 	@Override
 	public void info(String format, Object... params) {
-		if(this.isInfoEnabled()) {
-			logData(null, logClassFullName, LogLevel.INFO, format, params, null);
-		}
+		info(format, params, null);
 	}
 
 	@Override
 	public void warn(String format, Object... params) {
-		if(this.isWarnEnabled()) {
-			logData(null, logClassFullName, LogLevel.WARN, format, params, null);
-		}
+		warn(format, params, null);
 	}
 
 	@Override
 	public void error(String format, Object... params) {
-		if(this.isErrorEnabled()) {
-			logData(null, logClassFullName, LogLevel.ERROR, format, params, null);
-		}
+		error(format, params, null);
 	}
 
 	public void logData(Marker marker, String logClassFullName, LogLevel level,
@@ -78,5 +69,53 @@ public class LoggerImpl implements Logger {
 			}
 			location.log(marker, logClassFullName, level.val, message, null, t);
 		}
+	}
+
+	@Override
+	public void debug(String format, Object[] params, Throwable t) {
+		if(this.isDebugEnabled()) {
+			logData(null, logClassFullName, LogLevel.DEBUG, format, params, t);
+		}
+	}
+
+	@Override
+	public void info(String format, Object[] params, Throwable t) {
+		if(this.isInfoEnabled()) {
+			logData(null, logClassFullName, LogLevel.INFO, format, params, t);
+		}
+	}
+
+	@Override
+	public void warn(String format, Object[] params, Throwable t) {
+		if(this.isWarnEnabled()) {
+			logData(null, logClassFullName, LogLevel.WARN, format, params, t);
+		}
+	}
+
+	@Override
+	public void error(String format, Object[] params, Throwable t) {
+		if(this.isErrorEnabled()) {
+			logData(null, logClassFullName, LogLevel.ERROR, format, params, t);
+		}
+	}
+
+	@Override
+	public void debug(String message) {
+		debug(message, null, null);
+	}
+
+	@Override
+	public void info(String message) {
+		info(message, null, null);
+	}
+
+	@Override
+	public void warn(String message) {
+		warn(message, null, null);
+	}
+
+	@Override
+	public void error(String message) {
+		error(message, null, null);
 	}
 }

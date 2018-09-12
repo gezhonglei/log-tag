@@ -68,4 +68,24 @@ public class TagLoggerImpl extends LoggerImpl implements TagLogger {
 	public Logger getLogger(String tag) {
 		return new InnerLogger(tag, this);
 	}
+
+	@Override
+	public void debugTag(String tag, String format, Object[] params, Throwable t) {
+		this.logDataFlag(tag, FQCN, LogLevel.ERROR, format, params, t);
+	}
+
+	@Override
+	public void infoTag(String tag, String format, Object[] params, Throwable t) {
+		this.logDataFlag(tag, FQCN, LogLevel.ERROR, format, params, t);
+	}
+
+	@Override
+	public void warnTag(String tag, String format, Object[] params, Throwable t) {
+		this.logDataFlag(tag, FQCN, LogLevel.ERROR, format, params, t);
+	}
+
+	@Override
+	public void errorTag(String tag, String format, Object[] params, Throwable t) {
+		this.logDataFlag(tag, FQCN, LogLevel.ERROR, format, params, t);
+	}
 }
