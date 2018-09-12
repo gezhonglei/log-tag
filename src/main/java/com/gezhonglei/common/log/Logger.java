@@ -20,4 +20,5 @@ public interface Logger {
 	void info(String format, Object[] params, Throwable t);
 	void warn(String format, Object[] params, Throwable t);
 	void error(String format, Object[] params, Throwable t);
+	
 }

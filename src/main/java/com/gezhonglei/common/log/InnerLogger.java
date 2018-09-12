@@ -91,5 +91,4 @@ public class InnerLogger implements Logger {
 	public void error(String message) {
 		error(message, null, null);
 	}
-
 }

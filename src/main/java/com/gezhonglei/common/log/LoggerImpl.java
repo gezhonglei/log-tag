@@ -1,5 +1,7 @@
 package com.gezhonglei.common.log;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.helpers.FormattingTuple;
@@ -117,5 +119,15 @@ public class LoggerImpl implements Logger {
 	@Override
 	public void error(String message) {
 		error(message, null, null);
+	}
+
+	public void setLevel(LogLevel level) {
+		org.apache.log4j.Logger log4jLogger = this.logger.getName().equalsIgnoreCase("ROOT") ? LogManager.getRootLogger() : LogManager.getLogger(this.logger.getName());
+		log4jLogger.setLevel(Level.toLevel(level.getName().toUpperCase()));
+	}
+
+	public LogLevel getLevel() {
+		org.apache.log4j.Logger log4jLogger = this.logger.getName().equalsIgnoreCase("ROOT") ? LogManager.getRootLogger() : LogManager.getLogger(this.logger.getName());
+		return LogLevel.valueFrom(log4jLogger.getLevel().toString(), LogLevel.INFO);
 	}
 }
